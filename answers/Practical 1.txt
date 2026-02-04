@@ -1,0 +1,13 @@
+5. The tests all pass. They are not complete; the tests do not test for erroneous input, and they do not test for
+   edge cases either.
+6. The last element in a singularly linked list points to null, while the last element in a circularly linked list
+   points to the first element. Singularly linked lists are referenced by their head, while circularly linked lists
+   are referenced by their tail.
+7. Use a linked list when the number of elements is unknown/variable, when random access is not needed, and when
+   memory is not a concern.
+8. Round-Robin processes: round-robin gives each process a certain runtime, before pausing execution and moving onto
+   the next process. Circularly linked lists allow this process to repeat indefinitely, without the need to write
+   extra code to handle returning to the start of the list from the end.
+   Extra handles: a circularly linked list means that a reference to any node can be used to access the entire list.
+   This is useful if a process needs to access a particular node regularly, while also needing access to the entire
+   list.

@@ -84,7 +84,10 @@ public class SinglyLinkedList<E> implements List<E> {
 
     @Override
     public E get(int position) {
-        assert(position >= 0 && position < size());
+        assert(position >= 0 && position <= size());
+        if (position == size) {
+            return null;
+        }
         Node<E> curr = head;
         while (position > 0) {
             curr = curr.getNext();
@@ -191,6 +194,34 @@ public class SinglyLinkedList<E> implements List<E> {
         return curr.getElement();
     }
 
+    public SinglyLinkedList<Integer> sortedMerge(SinglyLinkedList<Integer> other) {
+        int thisIndex = 0;
+        int otherIndex = 0;
+
+        SinglyLinkedList<Integer> newList = new SinglyLinkedList<Integer>();
+        while (get(thisIndex) != null || other.get(otherIndex) != null) {
+            Integer thisData = (Integer) get(thisIndex);
+            Integer otherData = (Integer) other.get(otherIndex);
+            if (thisData == null) {
+                newList.addLast(otherData);
+                otherIndex++;
+            } else if (otherData == null) {
+                newList.addLast(thisData);
+                thisIndex++;
+            } else if (thisData.equals(otherData)) {
+                newList.addLast(thisData);
+                thisIndex++;
+            } else if (thisData.compareTo(otherData) < 0) {
+                newList.addLast(thisData);
+                thisIndex++;
+            } else {
+                newList.addLast(otherData);
+                otherIndex++;
+            }
+        }
+        return newList;
+    }
+
     //@Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator<E>();
@@ -227,22 +258,26 @@ public class SinglyLinkedList<E> implements List<E> {
 
     public static void main(String[] args) {
         SinglyLinkedList<Integer> ll = new SinglyLinkedList<Integer>();
-        System.out.println("ll " + ll + " isEmpty: " + ll.isEmpty());
         //LinkedList<Integer> ll = new LinkedList<Integer>();
 
         ll.addFirst(0);
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addLast(-1);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
         //ll.removeLast();
         //ll.removeFirst();
         //System.out.println("I accept your apology");
         //ll.add(3, 2);
         System.out.println(ll);
-        ll.remove(5);
-        System.out.println(ll);
 
+        SinglyLinkedList<Integer> ll2 = new SinglyLinkedList<Integer>();
+        ll2.addFirst(3);
+        ll2.addLast(7);
+        ll2.addLast(10);
+        System.out.println(ll2);
+
+        System.out.println("Merged: " + ll.sortedMerge(ll2));
     }
 }
