@@ -4,8 +4,6 @@ package project20280.stacksqueues;
 import org.junit.jupiter.api.Test;
 import project20280.interfaces.Stack;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,7 +45,7 @@ public class ArrayStackTest {
         Stack<Integer> s = new ArrayStack<>();
         for (int i = 0; i < 10; ++i)
             s.push(i);
-        assertEquals(9, Optional.ofNullable(s.top()));
+        assertEquals(9, s.top());
     }
 
     @Test
@@ -55,8 +53,8 @@ public class ArrayStackTest {
         Stack<Integer> s = new ArrayStack<>();
         for (int i = 0; i < 10; ++i)
             s.push(i);
-        assertEquals(9, Optional.ofNullable(s.pop()));
-        assertEquals(9, s.size());
+        assertEquals(9, s.top());
+        assertEquals(10, s.size());
     }
 
     @Test
