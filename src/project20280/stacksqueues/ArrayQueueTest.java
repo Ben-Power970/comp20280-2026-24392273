@@ -3,8 +3,6 @@ package project20280.stacksqueues;
 import org.junit.jupiter.api.Test;
 import project20280.interfaces.Queue;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -41,7 +39,7 @@ class ArrayQueueTest {
         Queue<Integer> s = new ArrayQueue<>();
         for (int i = 0; i < 10; ++i)
             s.enqueue(i);
-        assertEquals(0, Optional.ofNullable(s.first()));
+        assertEquals(0, s.first());
     }
 
     @Test
@@ -50,7 +48,7 @@ class ArrayQueueTest {
         for (int i = 0; i < 10; ++i)
             s.enqueue(i);
 
-        assertEquals(0, Optional.ofNullable(s.dequeue()));
+        assertEquals(0, s.dequeue());
         assertEquals(9, s.size());
     }
 

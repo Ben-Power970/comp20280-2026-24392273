@@ -6,12 +6,11 @@ public class ArrayQueue<E> implements Queue<E> {
 
     private static final int CAPACITY = 1000;
     private E[] data;
-    private final int front = 0;
-    private final int size = 0;
+    private int front = 0;
+    private int size = 0;
 
     public ArrayQueue(int capacity) {
-        // TODO
-
+        data = (E[]) new Object[capacity];
     }
 
     public ArrayQueue() {
@@ -31,7 +30,9 @@ public class ArrayQueue<E> implements Queue<E> {
 
     @Override
     public void enqueue(E e) {
-        // TODO
+        int index = (front + size) % CAPACITY;
+        data[index] = e;
+        size++;
     }
 
     @Override
@@ -41,8 +42,13 @@ public class ArrayQueue<E> implements Queue<E> {
 
     @Override
     public E dequeue() {
-        // TODO
-        return null;
+        E entry = data[front];
+        if (entry == null) {
+            return null;
+        }
+        front = (front + 1) % CAPACITY;
+        size--;
+        return entry;
     }
 
     public String toString() {
