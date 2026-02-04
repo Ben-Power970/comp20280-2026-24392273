@@ -95,7 +95,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
     @Override
     public void add(int position, E e) {
-        assert(position >= 0 && position < size());
+        assert(position >= 0 && position <= size());
         if (head == null) {
             head = new Node<E>(e, null);
             size++;
