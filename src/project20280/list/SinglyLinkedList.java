@@ -222,6 +222,25 @@ public class SinglyLinkedList<E> implements List<E> {
         return newList;
     }
 
+    public void reverse() {
+        if (size < 1) {
+            return;
+        }
+        Node<E> prev = null;
+        Node<E> curr = head;
+        Node<E> next = head.next;
+        while (next != null) {
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+            next = next.next;
+            if (next == null) {
+                curr.setNext(prev);
+                head = curr;
+            }
+        }
+    }
+
     //@Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator<E>();
@@ -279,5 +298,7 @@ public class SinglyLinkedList<E> implements List<E> {
         System.out.println(ll2);
 
         System.out.println("Merged: " + ll.sortedMerge(ll2));
+        ll.reverse();
+        System.out.println("Reversed: " + ll);
     }
 }
