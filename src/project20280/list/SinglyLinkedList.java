@@ -241,6 +241,17 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
+    @Override
+    public SinglyLinkedList<E> clone() {
+        SinglyLinkedList<E> newList = new SinglyLinkedList<E>();
+        Node<E> curr = head;
+        while (curr != null) {
+            newList.addLast(curr.getElement());
+            curr = curr.getNext();
+        }
+        return newList;
+    }
+
     //@Override
     public Iterator<E> iterator() {
         return new SinglyLinkedListIterator<E>();
@@ -300,5 +311,7 @@ public class SinglyLinkedList<E> implements List<E> {
         System.out.println("Merged: " + ll.sortedMerge(ll2));
         ll.reverse();
         System.out.println("Reversed: " + ll);
+        System.out.println("Cloned: " + ll.clone());
+        System.out.println("Cloned == Original: " + ll.clone().equals(ll));
     }
 }
