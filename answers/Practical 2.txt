@@ -3,3 +3,5 @@
    Dequeue: Remove the first element from Stack 1.
 3. Move everything from Stack 1 to Stack 2. Move everything from Stack 2 to Stack 3. Move everything from Stack 3 to
    Stack 1.
+4. We can extend this to support more bases by changing the value of the modulo/division operation (eg. num % 3,
+   num /= 3). To extend past base 10, we can use non-numeric characters to represent high numbers (eg. hexadecimal)
